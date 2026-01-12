@@ -1,150 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaffia - Coffee, Simplified.</title>
+    <title>Kaffia - App Showcase</title>
     <style>
         :root {
-            --primary: #6F4E37; /* Coffee Brown */
-            --secondary: #A67B5B; /* Latte */
-            --bg: #FAFAF9;
-            --text: #2D2D2D;
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --primary: #D4A373;
+            /* Latte color */
+            --text: #E0E0E0;
+            --text-secondary: #AAAAAA;
         }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
+
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            margin-top: 0;
+            font-weight: 300;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            color: var(--primary);
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Layout */
         header {
-            background: linear-gradient(135deg, #2C1810 0%, #6F4E37 100%);
-            color: white;
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        section {
             padding: 4rem 2rem;
             text-align: center;
         }
-        h1 { margin: 0; font-size: 3.5rem; letter-spacing: -1px; }
-        .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 1rem; }
-        
+
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 2rem;
         }
 
-        .hero-media {
-            margin: -3rem auto 2rem;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
-            max-width: 800px;
+        /* About Section */
+        #about {
+            background-color: var(--surface);
         }
-        
-        /* Placeholder for video - User needs to replace src */
+
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+
         video {
             width: 100%;
             display: block;
+            max-height: 500px;
+            object-fit: contain;
+            /* Keep aspect ratio */
+            background: #000;
         }
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: white;
+        .caption {
             padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
+            background: var(--surface);
+            text-align: left;
         }
-        .feature-card:hover { transform: translateY(-5px); }
-        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: background 0.3s;
+        .caption h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
         }
-        .btn:hover { background-color: #553A26; }
+
+        .caption p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Buttons */
+        .nav-btn {
+            position: absolute;
+            top: 40%;
+            /* Center vertically relative to video approx */
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 1rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            transition: background 0.3s;
+            z-index: 10;
+        }
+
+        .nav-btn:hover {
+            background: var(--primary);
+            color: black;
+        }
+
+        .prev {
+            left: 1rem;
+        }
+
+        .next {
+            right: 1rem;
+        }
+
+        /* Contact Section */
+        #contact a {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-bottom: 1px dotted var(--primary);
+        }
+
+        #contact a:hover {
+            color: white;
+            border-bottom-style: solid;
+        }
 
         footer {
             text-align: center;
             padding: 2rem;
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 3rem;
-            border-top: 1px solid #eee;
+            color: #555;
+            font-size: 0.8rem;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Kaffia</h1>
-    <div class="subtitle">The ultimate coffee companion. Order, Customize, Enjoy.</div>
-    <a href="#download" class="btn">Download Beta</a>
-</header>
+    <header>
+        <h1>KAFFIA</h1>
+        <div style="letter-spacing: 1px; color: var(--text-secondary);">PREMIUM COFFEE EXPERIENCE</div>
+    </header>
 
-<div class="container">
-    
-    <!-- VIDEO SECTION -->
-    <div class="hero-media">
-        <!-- Replace 'demo.mp4' with your actual video file relative path -->
-        <video controls poster="assets/poster.jpg">
-            <source src="assets/kaffia_demo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
-
-    <section>
-        <h2>About the App</h2>
-        <p>
-            Kaffia is built with Flutter to provide a seamless coffee ordering experience. 
-            Browse local cafes, customize your brew down to the bean, and skip the line with pre-ordering.
-        </p>
+    <section id="about">
+        <div class="container">
+            <h2>About</h2>
+            <p>
+                Kaffia isn't just a coffee ordering app; it's a personal barista in your pocket.
+                Designed for coffee connoisseurs, we allow granular customization of every beverage,
+                seamless location-based ordering, and a loyalty rewards system that actually matters.
+                Built with modern tech for speed, aesthetics, and simplicity.
+            </p>
+        </div>
     </section>
 
-    <div class="features">
-        <div class="feature-card">
-            <div class="feature-icon">☕</div>
-            <h3>Deep Customization</h3>
-            <p>Adjust sweetness, ice level, and milk options with our intuitive UI.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">📍</div>
-            <h3>Location Aware</h3>
-            <p>Find the nearest brewing spots instantly with live distance tracking.</p>
-        </div>
-        <div class="feature-card">
-            <div class="feature-icon">💳</div>
-            <h3>Secure Payments</h3>
-            <p>Integrated with Stripe for safe, one-tap checkout.</p>
-        </div>
-    </div>
+    <section id="showcase">
+        <div class="container">
+            <h2>App Tour</h2>
 
-    <section id="download" style="text-align: center; margin-top: 4rem;">
-        <h2>Try it out</h2>
-        <p>Currently available for Android (Beta).</p>
-        <a href="#" class="btn">Get .APK</a>
+            <div class="carousel-container">
+                <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="nav-btn next" onclick="moveSlide(1)">&#10095;</button>
+
+                <div class="carousel-track" id="track">
+
+                    <!-- SLIDE 1 -->
+                    <div class="carousel-slide">
+                        <video controls muted playsinline poster="assets/poster1.jpg">
+                            <source src="assets/demo_ordering.mp4" type="video/mp4">
+                        </video>
+                        <div class="caption">
+                            <h3>Seamless Ordering</h3>
+                            <p>Browse our curated menu with rich visuals. Customize milk, syrup, and roast type with a
+                                single tap.</p>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 2 -->
+                    <div class="carousel-slide">
+                        <video controls muted playsinline poster="assets/poster2.jpg">
+                            <source src="assets/demo_map.mp4" type="video/mp4">
+                        </video>
+                        <div class="caption">
+                            <h3>Location Tracking</h3>
+                            <p>Find the nearest cafe in real-time. The map updates dynamically as you move.</p>
+                        </div>
+                    </div>
+
+                    <!-- SLIDE 3 -->
+                    <div class="carousel-slide">
+                        <video controls muted playsinline poster="assets/poster3.jpg">
+                            <source src="assets/demo_pay.mp4" type="video/mp4">
+                        </video>
+                        <div class="caption">
+                            <h3>Secure Payments</h3>
+                            <p>Checkout instantly with Stripe integration. Safe, fast, and receipt-ready.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <p style="margin-top: 1rem; font-size: 0.9rem;">(Swipe or use arrows to navigate)</p>
+        </div>
     </section>
 
-</div>
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>
+                Have questions or want to request beta access?
+                <br><br>
+                <a href="mailto:support@kaffia.app">support@kaffia.app</a>
+            </p>
+        </div>
+    </section>
 
-<footer>
-    &copy; 2026 Kaffia Team. Built with Flutter & Supabase.
-</footer>
+    <footer>
+        &copy; 2026 Kaffia Inc. All Rights Reserved.
+    </footer>
+
+    <script>
+        let slideIndex = 0;
+        const track = document.getElementById('track');
+        const slides = document.getElementsByClassName('carousel-slide');
+
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            if (n >= slides.length) { slideIndex = 0; }
+            if (n < 0) { slideIndex = slides.length - 1; }
+
+            const offset = -slideIndex * 100;
+            track.style.transform = `translateX(${offset}%)`;
+
+            // Pause all videos when sliding away
+            Array.from(document.querySelectorAll('video')).forEach(vid => vid.pause());
+        }
+
+        // Auto-advance optional:
+        // setInterval(() => moveSlide(1), 5000); 
+    </script>
 
 </body>
+
 </html>
