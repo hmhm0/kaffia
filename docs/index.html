@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kaffia - Coffee, Simplified.</title>
+    <style>
+        :root {
+            --primary: #6F4E37; /* Coffee Brown */
+            --secondary: #A67B5B; /* Latte */
+            --bg: #FAFAF9;
+            --text: #2D2D2D;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #2C1810 0%, #6F4E37 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        h1 { margin: 0; font-size: 3.5rem; letter-spacing: -1px; }
+        .subtitle { font-size: 1.2rem; opacity: 0.9; margin-top: 1rem; }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .hero-media {
+            margin: -3rem auto 2rem;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            max-width: 800px;
+        }
+        
+        /* Placeholder for video - User needs to replace src */
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+        .feature-card:hover { transform: translateY(-5px); }
+        .feature-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #553A26; }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 3rem;
+            border-top: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Kaffia</h1>
+    <div class="subtitle">The ultimate coffee companion. Order, Customize, Enjoy.</div>
+    <a href="#download" class="btn">Download Beta</a>
+</header>
+
+<div class="container">
+    
+    <!-- VIDEO SECTION -->
+    <div class="hero-media">
+        <!-- Replace 'demo.mp4' with your actual video file relative path -->
+        <video controls poster="assets/poster.jpg">
+            <source src="assets/kaffia_demo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <section>
+        <h2>About the App</h2>
+        <p>
+            Kaffia is built with Flutter to provide a seamless coffee ordering experience. 
+            Browse local cafes, customize your brew down to the bean, and skip the line with pre-ordering.
+        </p>
+    </section>
+
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">☕</div>
+            <h3>Deep Customization</h3>
+            <p>Adjust sweetness, ice level, and milk options with our intuitive UI.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📍</div>
+            <h3>Location Aware</h3>
+            <p>Find the nearest brewing spots instantly with live distance tracking.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💳</div>
+            <h3>Secure Payments</h3>
+            <p>Integrated with Stripe for safe, one-tap checkout.</p>
+        </div>
+    </div>
+
+    <section id="download" style="text-align: center; margin-top: 4rem;">
+        <h2>Try it out</h2>
+        <p>Currently available for Android (Beta).</p>
+        <a href="#" class="btn">Get .APK</a>
+    </section>
+
+</div>
+
+<footer>
+    &copy; 2026 Kaffia Team. Built with Flutter & Supabase.
+</footer>
+
+</body>
+</html>
