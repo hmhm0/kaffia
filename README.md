@@ -1,2 +1,2 @@
-# kaffia.github.io
+# kaffia
 Showcase of the Kaffia App
