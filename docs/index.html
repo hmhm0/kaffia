@@ -5,23 +5,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kaffia - App Showcase</title>
+    <!-- Import "Outfit" font to match the app -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #121212;
-            --surface: #1E1E1E;
+            /* AppColors.darkBackground: #1E1B1A */
+            --bg: #1E1B1A;
+            /* AppColors.darkSurface: #2D2624 */
+            --surface: #2D2624;
+            /* AppColors.espressoLight / User's Latte Choice: #D4A373 (Gold/Latte fits 'Premium' best on dark) */
             --primary: #D4A373;
-            /* Latte color */
-            --text: #E0E0E0;
-            --text-secondary: #AAAAAA;
+            /* AppColors.softTerracotta: #E57373 */
+            --accent: #E57373;
+            /* AppColors.darkTextPrimary: #EFEBE9 */
+            --text: #EFEBE9;
+            /* AppColors.darkTextSecondary: #BCAAA4 */
+            --text-secondary: #BCAAA4;
         }
 
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-family: 'Outfit', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: var(--bg);
             color: var(--text);
             margin: 0;
             padding: 0;
             line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
         /* Typography */
@@ -29,13 +40,15 @@
         h2,
         h3 {
             margin-top: 0;
-            font-weight: 300;
+            font-weight: 600;
         }
 
         h1 {
-            font-size: 2.5rem;
-            letter-spacing: 2px;
+            font-size: 3rem;
+            letter-spacing: 3px;
             color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
         }
 
         h2 {
@@ -43,6 +56,8 @@
             display: inline-block;
             padding-bottom: 0.5rem;
             margin-bottom: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
         }
 
         p {
@@ -50,16 +65,18 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
+            font-weight: 300;
         }
 
         /* Layout */
         header {
             text-align: center;
-            padding: 3rem 1rem;
+            padding: 4rem 1rem;
+            background: radial-gradient(circle at center, #2d2624 0%, var(--bg) 70%);
         }
 
         section {
-            padding: 4rem 2rem;
+            padding: 5rem 2rem;
             text-align: center;
         }
 
@@ -71,6 +88,8 @@
         /* About Section */
         #about {
             background-color: var(--surface);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Carousel */
@@ -79,45 +98,48 @@
             max-width: 800px;
             margin: 0 auto;
             background: #000;
-            border-radius: 12px;
+            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            border: 1px solid #333;
         }
 
         .carousel-track {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .carousel-slide {
             min-width: 100%;
             box-sizing: border-box;
+            background: #000;
         }
 
         video {
             width: 100%;
             display: block;
-            max-height: 500px;
+            max-height: 600px;
             object-fit: contain;
             /* Keep aspect ratio */
             background: #000;
         }
 
         .caption {
-            padding: 1.5rem;
+            padding: 2rem;
             background: var(--surface);
             text-align: left;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .caption h3 {
             color: var(--primary);
             margin-bottom: 0.5rem;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
 
         .caption p {
             margin: 0;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         /* Buttons */
@@ -126,48 +148,58 @@
             top: 40%;
             /* Center vertically relative to video approx */
             transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(4px);
             color: white;
-            border: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             padding: 1rem;
             cursor: pointer;
             font-size: 1.5rem;
             border-radius: 50%;
-            transition: background 0.3s;
+            transition: all 0.2s;
             z-index: 10;
         }
 
         .nav-btn:hover {
             background: var(--primary);
-            color: black;
+            color: #1E1B1A;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .nav-btn:active {
+            transform: translateY(-50%) scale(0.95);
         }
 
         .prev {
-            left: 1rem;
+            left: 1.5rem;
         }
 
         .next {
-            right: 1rem;
+            right: 1.5rem;
         }
 
         /* Contact Section */
         #contact a {
             color: var(--primary);
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             border-bottom: 1px dotted var(--primary);
+            transition: all 0.2s;
         }
 
         #contact a:hover {
-            color: white;
+            color: var(--accent);
+            border-bottom-color: var(--accent);
             border-bottom-style: solid;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            color: #555;
-            font-size: 0.8rem;
+            padding: 3rem;
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            background: #111;
         }
     </style>
 </head>
@@ -176,12 +208,13 @@
 
     <header>
         <h1>KAFFIA</h1>
-        <div style="letter-spacing: 1px; color: var(--text-secondary);">PREMIUM COFFEE EXPERIENCE</div>
+        <div style="font-weight: 300; letter-spacing: 4px; color: var(--text-secondary); font-size: 0.9rem;">PREMIUM
+            COFFEE EXPERIENCE</div>
     </header>
 
     <section id="about">
         <div class="container">
-            <h2>About</h2>
+            <h2>Redefining Coffee Culture</h2>
             <p>
                 Kaffia isn't just a coffee ordering app; it's a personal barista in your pocket.
                 Designed for coffee connoisseurs, we allow granular customization of every beverage,
@@ -193,7 +226,7 @@
 
     <section id="showcase">
         <div class="container">
-            <h2>App Tour</h2>
+            <h2>Experience the App</h2>
 
             <div class="carousel-container">
                 <button class="nav-btn prev" onclick="moveSlide(-1)">&#10094;</button>
@@ -207,7 +240,7 @@
                             <source src="assets/demo_browsing.mp4" type="video/mp4">
                         </video>
                         <div class="caption">
-                            <h3>Demo Browsing</h3>
+                            <h3>Curated Browsing</h3>
                             <p>Browse our curated menu with rich visuals. Customize milk, syrup, and roast type with a
                                 single tap.</p>
                         </div>
@@ -219,8 +252,8 @@
                             <source src="assets/demo_cafe_creation.mp4" type="video/mp4">
                         </video>
                         <div class="caption">
-                            <h3>Cafe Creation</h3>
-                            <p>Seamless cafe creation with details for menu, payment and gallery.</p>
+                            <h3>Merchant Tools</h3>
+                            <p>Seamless cafe creation with detailed management for menus, payments, and galleries.</p>
                         </div>
                     </div>
 
@@ -230,19 +263,19 @@
                             <source src="assets/demo_after_approval.mp4" type="video/mp4">
                         </video>
                         <div class="caption">
-                            <h3>After Cafe Approval Demo</h3>
-                            <p>A demo of things Merchants can edit / use after an approval of the Cafe.</p>
+                            <h3>Dashboard & Analytics</h3>
+                            <p>Powerful tools for merchants to manage operations after approval.</p>
                         </div>
                     </div>
 
-                     <!-- SLIDE 4 -->
+                    <!-- SLIDE 4 -->
                     <div class="carousel-slide">
                         <video controls muted playsinline poster="assets/poster1.jpg">
                             <source src="assets/demo_paynow.mp4" type="video/mp4">
                         </video>
                         <div class="caption">
-                            <h3>PayNow Demo</h3>
-                            <p>PayNow demo to showcase payment.</p>
+                            <h3>PayNow Integration</h3>
+                            <p>Instant localized payments with PayNow manual verification flows.</p>
                         </div>
                     </div>
 
@@ -252,31 +285,32 @@
                             <source src="assets/demo_stripe.mp4" type="video/mp4">
                         </video>
                         <div class="caption">
-                            <h3>Stripe Demo</h3>
-                            <p>Stripe demo to showcase payment 2.</p>
+                            <h3>Credit Card Payments</h3>
+                            <p>Secure, one-tap checkout powered by Stripe integration.</p>
                         </div>
                     </div>
 
-                    <!-- SLIDE 5 -->
+                    <!-- SLIDE 6 -->
                     <div class="carousel-slide">
                         <video controls muted playsinline poster="assets/poster1.jpg">
                             <source src="assets/demo_map.mp4" type="video/mp4">
                         </video>
                         <div class="caption">
-                            <h3>Map Demo</h3>
-                            <p>Showcase of the Around you map demo</p>
+                            <h3>Interactive Map</h3>
+                            <p>Find nearby specialty cafes in real-time with dynamic geolocation.</p>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
-            <p style="margin-top: 1rem; font-size: 0.9rem;">(Swipe or use arrows to navigate)</p>
+            <p style="margin-top: 1.5rem; font-size: 0.85rem; color: #666; letter-spacing: 0.5px;">SWIPE OR USE ARROWS
+                TO NAVIGATE</p>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <h2>Contact</h2>
+            <h2>Get in Touch</h2>
             <p>
                 Have questions or want to request beta access?
                 <br><br>
@@ -316,6 +350,3 @@
 </body>
 
 </html>
-
-
-
